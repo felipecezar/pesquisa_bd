@@ -1,4 +1,5 @@
 <?php
+    header("Content-type: text/html; charset=utf-8");
     require_once('BD.php');
     $bd = new BD();
     $dados = $bd->todosDados();
@@ -15,13 +16,13 @@
 </head>
 <body>
     <h1>Pesquisa em BD</h1>
-    <form action="pesquisa.php" method="post">
+    <form action="pesquisar.php" method="post">
         <input 
             type="text" 
             name="nome" 
             placeholder="Pesquisa Aqui ..."
             id="campoPesquisa"
-            oninput=pesquisar(this.value)>
+            oninput=pesquisaDados(this.value)>
     </form>
 
     <ul id="listaNomes">

@@ -9,7 +9,7 @@
 
 
         public function __construct() {
-            $pdo = "mysql:host=" . $this ->host . ";dbname=" . $this->banco;
+            $pdo = "mysql:host=" . $this ->host . ";dbname=" . $this->banco . ';charset=utf8';
 
             try {
                 $this->con = new PDO($pdo, $this->usuario);
@@ -29,9 +29,9 @@
         }
 
         public function pesquisarDados($nome){
-            $sql = "SELECT nome FROM nomes WHERE nome LIKE :nome";
+            $sql = 'SELECT nome FROM nomes WHERE nome LIKE "%' . $nome . '%"';
             $pdo = $this->con->prepare($sql);
-            $pdo->execute(["nome"=>"%" . $nome . "%"]);
+            $pdo->execute();
             $dados = $pdo->fetchAll(PDO::FETCH_ASSOC);
             return $dados;
         }
